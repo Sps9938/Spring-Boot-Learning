@@ -5,5 +5,7 @@ public class UserService {
     public void saveUser(String user) {
         System.out.println("User saved successfully!");
         mySQLDatabase.saveToDB(user);
+
+        System.out.println("User saved successfully!");
     }
 }
