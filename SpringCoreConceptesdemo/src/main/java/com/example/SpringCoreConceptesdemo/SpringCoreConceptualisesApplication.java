@@ -5,15 +5,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringCoreConceptesdemoApplication implements CommandLineRunner {
+public class SpringCoreConceptualisesApplication implements CommandLineRunner {
 	public static void main(String[] args) {
-		SpringApplication.run(SpringCoreConceptesdemoApplication.class, args);
+		SpringApplication.run(SpringCoreConceptualisesApplication.class, args);
 	}
-	UserService userService = new UserService();
+
+	public SpringCoreConceptualisesApplication(UserService userService) {
+		this.userService = userService;
+	}
+
+	private final UserService userService;
+
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		userService.saveUser("Satya");
+		userService.saveUser("Satya is the User");
 	}
 
 }
