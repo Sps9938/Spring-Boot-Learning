@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class UserRepository {
@@ -19,6 +20,13 @@ public class UserRepository {
 
     public List<UserDto> findAll() {
         return this.users;
+    }
+
+    public UserDto getUserById(Long id) {
+       for(UserDto user: users) {
+           if(Objects.equals(user.getId(), id)) return user;
+       }
+       return null;
     }
 
 }

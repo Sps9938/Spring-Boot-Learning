@@ -3,6 +3,7 @@ package com.RestDemo.Restdemo.controller;
 import com.RestDemo.Restdemo.dto.UserDto;
 import com.RestDemo.Restdemo.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +19,14 @@ public class UserController {
     }
 
     @GetMapping
-
     public List<UserDto> getAllUsers() {
         return this.userService.getAllUsers();
     }
+
+    @GetMapping("/{id}")
+    public UserDto getUserById(@PathVariable Long id) {
+        return userService.getUserById(id);
+    }
+
 
 }
