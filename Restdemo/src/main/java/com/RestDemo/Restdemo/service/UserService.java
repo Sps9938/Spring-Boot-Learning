@@ -1,5 +1,6 @@
 package com.RestDemo.Restdemo.service;
 
+import com.RestDemo.Restdemo.dto.CreateUserDto;
 import com.RestDemo.Restdemo.dto.UserDto;
 import com.RestDemo.Restdemo.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,11 @@ public class UserService {
         return this.userRepository.findAll();
     }
 
-    public UserDto getUserById(Long id) {
+    public UserDto getUserById(String id) {
         return userRepository.getUserById(id);
+    }
+
+    public UserDto save(CreateUserDto createUserDto) {
+        return userRepository.save(createUserDto);
     }
 }
