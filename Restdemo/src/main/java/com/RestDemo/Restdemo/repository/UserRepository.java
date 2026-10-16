@@ -2,6 +2,7 @@ package com.RestDemo.Restdemo.repository;
 
 import com.RestDemo.Restdemo.dto.CreateUserDto;
 import com.RestDemo.Restdemo.dto.UserDto;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -46,5 +47,10 @@ public class UserRepository {
             }
         }
         return null;
+    }
+
+
+    public void deleteUserById(String id) {
+        users.removeIf(userDto -> userDto.getId().equals(id));
     }
 }
