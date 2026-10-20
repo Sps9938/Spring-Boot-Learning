@@ -1,5 +1,6 @@
 package com.example.SpringJpaDemo.entities;
 
+import com.example.SpringJpaDemo.dto.UserDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
