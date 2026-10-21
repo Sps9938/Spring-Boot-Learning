@@ -6,6 +6,10 @@ import com.example.SpringJpaDemo.entities.User;
 import com.example.SpringJpaDemo.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -65,6 +69,20 @@ public class UserService {
         user.setEmail(updateUserDto.getEmail());
 
         return new UserDto(user.getId(), user.getName(), user.getEmail());
+
+    }
+
+    public List<UserDto> getAllUserPaginated(int page, int pageSize, String direction, String sortBy) {
+        Sort sort;
+        sort = direction.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() :
+                Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(page, pageSize, sort);
+        Page<User> userPage = userRepository.findAll(pageable);
+        List<UserDto> userDtoList = new ArrayList<>();
+        userPage.forEach(User ->{
+            userDtoList.add(new UserDto(User.getId(), User.getName(), User.getEmail()));
+        });
+        return userDtoList;
 
     }
 }
